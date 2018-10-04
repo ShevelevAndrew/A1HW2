@@ -42,15 +42,11 @@ public class WorkoutDetailActivity extends AppCompatActivity {
             public void onProgressChanged(SeekBar seekBar, int progress, boolean b) {
                 weight.setText(String.valueOf(progress));
             }
-
             @Override
             public void onStartTrackingTouch(SeekBar seekBar) {
-
             }
-
             @Override
             public void onStopTrackingTouch(SeekBar seekBar) {
-
             }
         });
 
