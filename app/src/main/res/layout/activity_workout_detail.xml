@@ -116,7 +116,25 @@
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:gravity="center"
-                android:orientation="horizontal">
+                android:orientation="horizontal"
+                android:layout_marginTop="8dp">
+
+                <Spinner
+                    android:id="@+id/spinner"
+                    android:layout_width="match_parent"
+                    android:spinnerMode="dialog"
+                    android:layout_height="wrap_content">
+                </Spinner>
+
+            </LinearLayout>
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:gravity="center"
+                android:orientation="horizontal"
+                android:layout_marginTop="8dp">
+
 
                 <TextView
                     android:layout_width="wrap_content"
@@ -135,6 +153,8 @@
                     android:layout_height="wrap_content"
                     android:text="@string/kg" />
             </LinearLayout>
+
+
 
             <SeekBar
                 android:id="@+id/workout_detail_weight_seek_bar"
