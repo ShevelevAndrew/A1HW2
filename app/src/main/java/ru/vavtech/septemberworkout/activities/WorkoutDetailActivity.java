@@ -3,11 +3,15 @@ package ru.vavtech.septemberworkout.activities;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.view.View;
+import android.widget.AdapterView;
+import android.widget.ArrayAdapter;
 import android.widget.Button;
 import android.widget.EditText;
 import android.widget.ImageView;
 import android.widget.SeekBar;
+import android.widget.Spinner;
 import android.widget.TextView;
+import android.widget.Toast;
 
 import java.util.Date;
 
@@ -25,6 +29,7 @@ public class WorkoutDetailActivity extends AppCompatActivity {
     private SeekBar weightSeekBar;
     private EditText repsCountEditText;
     private Button saveRecordButton;
+
 
 
     @Override
@@ -62,6 +67,7 @@ public class WorkoutDetailActivity extends AppCompatActivity {
                 }
             }
         });
+
     }
 
     private void initGUI(Workout workout) {
@@ -81,6 +87,28 @@ public class WorkoutDetailActivity extends AppCompatActivity {
         repsCountEditText = findViewById(R.id.workout_detail_reps_count_edit_text);
 
         saveRecordButton = findViewById(R.id.workout_detail_save_button);
+
+        final String[] data = {getString(R.string.pulling_up), getString(R.string.squat), getString(R.string.barbell_bench_press)};
+        ArrayAdapter<String> adapter = new ArrayAdapter<String>(this, android.R.layout.simple_spinner_item, data);
+        adapter.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
+        final Spinner spinner = (Spinner) findViewById(R.id.spinner);
+        spinner.setAdapter(adapter);
+        spinner.setPrompt(getString(R.string.сhoose_exercise));
+
+        spinner.setOnItemSelectedListener(new AdapterView.OnItemSelectedListener() {
+            @Override
+            public void onItemSelected(AdapterView<?> parent, View view,
+                                       int position, long id) {
+                title.setText(data[position]);
+               // Toast.makeText(getBaseContext(), "Position = " + data[position], Toast.LENGTH_SHORT).show();
+
+            }
+            @Override
+            public void onNothingSelected(AdapterView<?> arg0) {
+            }
+        });
+
+
     }
 
 

@@ -6,4 +6,9 @@
     <string name="kg">kg.</string>
     <string name="save">Save</string>
     <string name="records_text_view">Records</string>
+    <string name="сhoose_exercise">Choose an exercise</string>
+    <string name="pulling_up">Pulling up on a horizontal bar</string>
+    <string name="squat">Squat</string>
+    <string name="barbell_bench_press">Barbell bench press</string>
+
 </resources>

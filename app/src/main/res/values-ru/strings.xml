@@ -1,0 +1,13 @@
+<resources>
+    <string name="app_name">SeptemberWorkout</string>
+    <string name="date_text">Дата: </string>
+    <string name="reps_count_text">Количество повторов: </string>
+    <string name="weight_text">Вес:</string>
+    <string name="kg">кг.</string>
+    <string name="save">Сохранить</string>
+    <string name="records_text_view">Рекорды</string>
+    <string name="сhoose_exercise">Выбирете упражнение</string>
+    <string name="pulling_up">Подтягивание на турнике</string>
+    <string name="squat">Приседание</string>
+    <string name="barbell_bench_press">Жим штанги</string>
+</resources>
