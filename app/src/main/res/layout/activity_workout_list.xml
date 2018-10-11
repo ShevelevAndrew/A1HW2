@@ -1,0 +1,74 @@
+<?xml version="1.0" encoding="utf-8"?>
+<ScrollView xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_height="wrap_content"
+    android:layout_marginRight="16dp"
+    android:layout_marginLeft="16dp"
+    android:layout_width="match_parent">
+<LinearLayout
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical">
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:orientation="horizontal"
+        android:layout_marginTop="4dp"
+        android:layout_marginBottom="4dp"
+        android:layout_height="wrap_content">
+        <ImageView
+            android:layout_width="50dp"
+            android:layout_marginRight="4dp"
+            android:src="@drawable/ic_pulling_up"
+            android:layout_height="50dp" />
+        <Button
+            android:id="@+id/button_pulling_up"
+            android:layout_width="match_parent"
+            android:text="@string/pulling_up"
+            android:layout_height="wrap_content" />
+
+
+    </LinearLayout>
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:orientation="horizontal"
+        android:layout_marginTop="4dp"
+        android:layout_marginBottom="4dp"
+        android:layout_height="wrap_content">
+        <ImageView
+            android:layout_width="50dp"
+            android:layout_marginRight="4dp"
+            android:src="@drawable/ic_squat_"
+            android:layout_height="50dp" />
+        <Button
+            android:id="@+id/button_squat"
+            android:layout_width="match_parent"
+            android:text="@string/squat"
+            android:layout_height="wrap_content" />
+
+
+    </LinearLayout>
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:orientation="horizontal"
+        android:layout_marginTop="4dp"
+        android:layout_marginBottom="4dp"
+        android:layout_height="wrap_content">
+        <ImageView
+            android:layout_width="50dp"
+            android:layout_marginRight="4dp"
+            android:src="@drawable/ic_barbell_bench_press"
+            android:layout_height="50dp" />
+        <Button
+            android:id="@+id/button_barbell_bench_press"
+            android:layout_width="match_parent"
+            android:text="@string/barbell_bench_press"
+            android:layout_height="wrap_content" />
+
+
+    </LinearLayout>
+
+
+</LinearLayout>
+</ScrollView>
