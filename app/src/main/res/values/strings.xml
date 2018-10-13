@@ -11,6 +11,8 @@
     <string name="squat">Squat</string>
     <string name="barbell_bench_press">Barbell bench press</string>
     <string name="share">Share</string>
+    <string name="settings">Settings</string>
+    <string name="quit">Quit</string>
 
 
 </resources>

@@ -10,4 +10,7 @@
     <string name="pulling_up">Подтягивание на турнике</string>
     <string name="squat">Приседание</string>
     <string name="barbell_bench_press">Жим штанги</string>
+    <string name="share">Поделиться</string>
+    <string name="settings">Настройки</string>
+    <string name="quit">Выйти</string>
 </resources>
