@@ -20,9 +20,10 @@ public class WorkoutListActivity extends AppCompatActivity {
     @Override
     protected void onCreate(@Nullable Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_workout_list);
+        setContentView(R.layout.list_item);
+        //setContentView(R.layout.activity_workout_list);
 
-        initGUI();
+        //initGUI();
     }
 
     @Override
@@ -75,7 +76,6 @@ public class WorkoutListActivity extends AppCompatActivity {
         buttonPullingUp.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                //Toast.makeText(WorkoutListActivity.this,"Нажата кнопка "+getString(R.string.pulling_up),Toast.LENGTH_SHORT).show();
                 Intent startWorkoutDetailActivity = new Intent(WorkoutListActivity.this, WorkoutDetailActivity.class);
                 startWorkoutDetailActivity.putExtra("workout", "0");
                 startActivity(startWorkoutDetailActivity);

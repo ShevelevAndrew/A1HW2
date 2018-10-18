@@ -1,6 +1,7 @@
 package ru.vavtech.septemberworkout.activities;
 
 import android.content.Intent;
+import android.graphics.drawable.Drawable;
 import android.os.Bundle;
 import android.os.PersistableBundle;
 import android.support.v7.app.AppCompatActivity;
@@ -14,8 +15,8 @@ import android.widget.Button;
 import android.widget.EditText;
 import android.widget.ImageButton;
 import android.widget.ImageView;
+import android.widget.ScrollView;
 import android.widget.SeekBar;
-import android.widget.ShareActionProvider;
 import android.widget.Spinner;
 import android.widget.TextView;
 import android.widget.Toast;
@@ -39,10 +40,12 @@ public class WorkoutDetailActivity extends AppCompatActivity {
     private Button saveRecordButton;
     private ImageButton shareButton;
 
+    private Drawable mActionBarBackgroundDrawable;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
+
         setContentView(R.layout.activity_workout_detail);
         Workout workout;
 
@@ -58,7 +61,24 @@ public class WorkoutDetailActivity extends AppCompatActivity {
         }
         initGUI(workout);
         addListeners();
+
+        //
+//        mActionBarBackgroundDrawable = getResources().getDrawable(R.drawable.ic_launcher_background);
+//        mActionBarBackgroundDrawable.setAlpha(0);
+//
+//        getActionBar().setBackgroundDrawable(mActionBarBackgroundDrawable);
+//
+//        ((NotifyingScrollView) findViewById(R.id.scroll_view)).setOnScrollChangedListener(mOnScrollChangedListener);
     }
+
+    private NotifyingScrollView.OnScrollChangedListener mOnScrollChangedListener = new NotifyingScrollView.OnScrollChangedListener() {
+        public void onScrollChanged(ScrollView who, int l, int t, int oldl, int oldt) {
+            final int headerHeight = findViewById(R.id.button_share).getHeight() - getActionBar().getHeight();
+            final float ratio = (float) Math.min(Math.max(t, 0), headerHeight) / headerHeight;
+            final int newAlpha = (int) (ratio * 255);
+            mActionBarBackgroundDrawable.setAlpha(newAlpha);
+        }
+    };
 
     @Override
     protected void onSaveInstanceState(Bundle outState) {
@@ -107,8 +127,6 @@ public class WorkoutDetailActivity extends AppCompatActivity {
         super.onDestroy();
     }
 
-
-
     @Override
     public void onRestoreInstanceState(Bundle savedInstanceState, PersistableBundle persistentState) {
         super.onRestoreInstanceState(savedInstanceState, persistentState);
@@ -137,7 +155,6 @@ public class WorkoutDetailActivity extends AppCompatActivity {
                 return super.onOptionsItemSelected(item);
         }
     }
-
 
     private void shareRecord() {
         // Create the text message with a string
@@ -219,8 +236,7 @@ public class WorkoutDetailActivity extends AppCompatActivity {
         spinner.setAdapter(adapter);
 
         Intent intent = getIntent();
-        int indSpiner = Integer.parseInt(intent.getStringExtra("workout"));
-        spinner.setSelection(indSpiner);
+        spinner.setSelection(Integer.parseInt(intent.getStringExtra("workout")));
         spinner.setPrompt(getString(R.string.сhoose_exercise));
 
         spinner.setOnItemSelectedListener(new AdapterView.OnItemSelectedListener() {
