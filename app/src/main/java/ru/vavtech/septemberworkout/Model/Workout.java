@@ -13,7 +13,7 @@ public class Workout {
     private Date recordDate;
     private int recordWeight;
 
-    public Workout(String жим, String title, CharSequence text, Date recordDate, int progress) {
+    public Workout(String title, CharSequence text, Date recordDate, int progress) {
         this.title = title;
     }
 
@@ -24,6 +24,11 @@ public class Workout {
         this.recordDate = recordDate;
         this.recordWeight = recordWeight;
     }
+
+    public Workout(String title) {
+        this.title = title;
+    }
+
 
     public String getFormattedRecordDate(){
         return new SimpleDateFormat("dd MMMM yyyy", Locale.ROOT).format(recordDate);

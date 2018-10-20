@@ -2,101 +2,44 @@ package ru.vavtech.septemberworkout.activities;
 
 import android.content.Intent;
 import android.os.Bundle;
+import android.support.annotation.NonNull;
 import android.support.annotation.Nullable;
 import android.support.v7.app.AppCompatActivity;
+import android.support.v7.widget.GridLayoutManager;
+import android.support.v7.widget.LinearLayoutManager;
+import android.support.v7.widget.RecyclerView;
 import android.util.Log;
+import android.view.LayoutInflater;
 import android.view.View;
+import android.view.ViewGroup;
 import android.widget.Button;
+import android.widget.LinearLayout;
+import android.widget.TextView;
 import android.widget.Toast;
 
+import java.util.List;
+
+import ru.vavtech.septemberworkout.Model.Workout;
+import ru.vavtech.septemberworkout.Model.WorkoutList;
 import ru.vavtech.septemberworkout.R;
+import ru.vavtech.septemberworkout.list.WorkoutAdapter;
 
 public class WorkoutListActivity extends AppCompatActivity {
     public static final String TAG = "WorkoutListActivityLog";
-    Button buttonPullingUp;
-    Button buttonSquat;
-    Button buttonBarbellBenchPress;
 
     @Override
     protected void onCreate(@Nullable Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.list_item);
-        //setContentView(R.layout.activity_workout_list);
+        setContentView(R.layout.activity_workout_list);
 
-        //initGUI();
-    }
+        RecyclerView recyclerView = findViewById(R.id.recycler_view);
 
-    @Override
-    protected void onStart() {
-        Log.d(TAG,"Вызван onStart");
-        Toast.makeText(WorkoutListActivity.this,"onStart",Toast.LENGTH_SHORT).show();
-        super.onStart();
-    }
-
-    @Override
-    protected void onResume() {
-        Log.d(TAG,"Вызван onResume");
-        Toast.makeText(WorkoutListActivity.this,"onResume",Toast.LENGTH_SHORT).show();
-        super.onResume();
-    }
-
-    @Override
-    protected void onPause() {
-        Log.d(TAG,"Вызван onPause");
-        Toast.makeText(WorkoutListActivity.this,"onPause",Toast.LENGTH_SHORT).show();
-        super.onPause();
-    }
-
-    @Override
-    protected void onStop() {
-        Log.d(TAG,"Вызван onStop");
-        Toast.makeText(WorkoutListActivity.this,"onStop",Toast.LENGTH_SHORT).show();
-        super.onStop();
-    }
-
-    @Override
-    protected void onRestart() {
-        Log.d(TAG,"Вызван onRestart");
-        Toast.makeText(WorkoutListActivity.this,"onRestart",Toast.LENGTH_SHORT).show();
-        super.onRestart();
-    }
-
-    @Override
-    protected void onDestroy() {
-        Log.d(TAG,"Вызван onDestroy");
-        Toast.makeText(WorkoutListActivity.this,"onDestroy",Toast.LENGTH_SHORT).show();
-        super.onDestroy();
-    }
-
-    private void initGUI() {
-        buttonPullingUp = findViewById(R.id.button_pulling_up);
-        buttonSquat = findViewById(R.id.button_squat);
-        buttonBarbellBenchPress = findViewById(R.id.button_barbell_bench_press);
-
-        buttonPullingUp.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                Intent startWorkoutDetailActivity = new Intent(WorkoutListActivity.this, WorkoutDetailActivity.class);
-                startWorkoutDetailActivity.putExtra("workout", "0");
-                startActivity(startWorkoutDetailActivity);
-            }
-        });
-        buttonSquat.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                Intent startWorkoutDetailActivity = new Intent(WorkoutListActivity.this, WorkoutDetailActivity.class);
-                startWorkoutDetailActivity.putExtra("workout", "1");
-                startActivity(startWorkoutDetailActivity);
-            }
-        });
-        buttonBarbellBenchPress.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                Intent startWorkoutDetailActivity = new Intent(WorkoutListActivity.this, WorkoutDetailActivity.class);
-                startWorkoutDetailActivity.putExtra("workout", "2");
-                startActivity(startWorkoutDetailActivity);
-            }
-        });
+        LinearLayoutManager linearLayoutManager =
+                new LinearLayoutManager(this, LinearLayoutManager.VERTICAL, false);
+        GridLayoutManager gridLayoutManager = new GridLayoutManager(this, 2);
+        recyclerView.setLayoutManager(linearLayoutManager);
+        recyclerView.setAdapter(new WorkoutAdapter());
 
     }
+
 }

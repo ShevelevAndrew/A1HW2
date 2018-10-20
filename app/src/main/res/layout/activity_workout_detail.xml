@@ -1,11 +1,10 @@
 <?xml version="1.0" encoding="utf-8"?>
-<ScrollView
-    xmlns:android="http://schemas.android.com/apk/res/android"
+<ScrollView xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/scroll_view"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:orientation="vertical"
-    android:id="@+id/scroll_view"
     tools:context=".activities.WorkoutDetailActivity">
 
     <LinearLayout
@@ -117,25 +116,9 @@
             <LinearLayout
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
+                android:layout_marginTop="8dp"
                 android:gravity="center"
-                android:orientation="horizontal"
-                android:layout_marginTop="8dp">
-
-                <Spinner
-                    android:id="@+id/spinner"
-                    android:layout_width="match_parent"
-                    android:spinnerMode="dialog"
-                    android:layout_height="wrap_content">
-                </Spinner>
-
-            </LinearLayout>
-
-            <LinearLayout
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:gravity="center"
-                android:orientation="horizontal"
-                android:layout_marginTop="8dp">
+                android:orientation="horizontal">
 
 
                 <TextView
@@ -147,15 +130,14 @@
                 <TextView
                     android:id="@+id/workout_detail_weight"
                     android:layout_width="wrap_content"
-                    android:text="0"
-                    android:layout_height="wrap_content" />
+                    android:layout_height="wrap_content"
+                    android:text="0" />
 
                 <TextView
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:text="@string/kg" />
             </LinearLayout>
-
 
 
             <SeekBar
@@ -167,38 +149,38 @@
         </LinearLayout>
 
         <LinearLayout
-            android:layout_marginTop="8dp"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
+            android:layout_marginTop="8dp"
             android:orientation="vertical">
 
             <EditText
                 android:id="@+id/workout_detail_reps_count_edit_text"
-                android:hint="@string/reps_count_text"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
+                android:hint="@string/reps_count_text"
                 android:inputType="numberDecimal" />
         </LinearLayout>
 
         <Button
             android:id="@+id/workout_detail_save_button"
             android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
             android:layout_gravity="center"
-            android:text="@string/save"
-            android:layout_height="wrap_content" />
+            android:text="@string/save" />
+
         <ImageButton
             android:id="@+id/button_share"
-            android:layout_gravity="center_horizontal"
-            android:src="@drawable/ic_share"
             android:layout_width="wrap_content"
-            android:layout_height="wrap_content" />
+            android:layout_height="wrap_content"
+            android:layout_gravity="center_horizontal"
+            android:src="@drawable/ic_share" />
 
         <TextView
             android:id="@+id/workout_detail_description"
             android:layout_width="match_parent"
-            android:text="Это длинный текст, для проверки прокрутки. Это длинный текст, для проверки прокрутки. Это длинный текст, для проверки прокрутки. Это длинный текст, для проверки прокрутки. Это длинный текст, для проверки прокрутки. Это длинный текст, для проверки прокрутки. Это длинный текст, для проверки прокрутки. Это длинный текст, для проверки прокрутки. Это длинный текст, для проверки прокрутки. Это длинный текст, для проверки прокрутки. Это длинный текст, для проверки прокрутки. Это длинный текст, для проверки прокрутки. Это длинный текст, для проверки прокрутки. Это длинный текст, для проверки прокрутки."
-            android:layout_height="wrap_content" />
-
+            android:layout_height="wrap_content"
+            android:text="Это длинный текст, для проверки прокрутки. Это длинный текст, для проверки прокрутки. Это длинный текст, для проверки прокрутки. Это длинный текст, для проверки прокрутки. Это длинный текст, для проверки прокрутки. Это длинный текст, для проверки прокрутки. Это длинный текст, для проверки прокрутки. Это длинный текст, для проверки прокрутки. Это длинный текст, для проверки прокрутки. Это длинный текст, для проверки прокрутки. Это длинный текст, для проверки прокрутки. Это длинный текст, для проверки прокрутки. Это длинный текст, для проверки прокрутки. Это длинный текст, для проверки прокрутки." />
 
     </LinearLayout>
 

@@ -25,7 +25,9 @@ import java.text.SimpleDateFormat;
 import java.util.Date;
 
 import ru.vavtech.septemberworkout.Model.Workout;
+import ru.vavtech.septemberworkout.Model.WorkoutList;
 import ru.vavtech.septemberworkout.R;
+import ru.vavtech.septemberworkout.utils.Constants;
 
 public class WorkoutDetailActivity extends AppCompatActivity {
     private TextView title;
@@ -45,30 +47,21 @@ public class WorkoutDetailActivity extends AppCompatActivity {
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-
         setContentView(R.layout.activity_workout_detail);
-        Workout workout;
 
-        if (savedInstanceState == null) {
-            workout = new Workout("Подтягивания", "Подтягивания на перекладине", 0, new Date(), 0);
+        Intent intent = getIntent();
+        int index = intent.getIntExtra(Constants.WORKOUT_INDEX, 0);
+        Workout workout = WorkoutList.getInstance().getWorkouts().get(index);
 
-        } else {
-            workout = new Workout(savedInstanceState.getString("title"),
-                    savedInstanceState.getString("description"),
-                    savedInstanceState.getInt("recordRepsCount"),
-                    new Date(),
-                    savedInstanceState.getInt("recordWeight"));
-        }
+//        Workout workout = WorkoutList
+//                .getInstance()
+//                .getWorkouts()
+//                .get(getIntent()
+//                        .getIntExtra("workout_index",0));
+
         initGUI(workout);
         addListeners();
 
-        //
-//        mActionBarBackgroundDrawable = getResources().getDrawable(R.drawable.ic_launcher_background);
-//        mActionBarBackgroundDrawable.setAlpha(0);
-//
-//        getActionBar().setBackgroundDrawable(mActionBarBackgroundDrawable);
-//
-//        ((NotifyingScrollView) findViewById(R.id.scroll_view)).setOnScrollChangedListener(mOnScrollChangedListener);
     }
 
     private NotifyingScrollView.OnScrollChangedListener mOnScrollChangedListener = new NotifyingScrollView.OnScrollChangedListener() {
@@ -83,8 +76,8 @@ public class WorkoutDetailActivity extends AppCompatActivity {
     @Override
     protected void onSaveInstanceState(Bundle outState) {
         super.onSaveInstanceState(outState);
-        outState.putString("title",title.getText().toString());
-        outState.putString("description",description.getText().toString());
+        outState.putString("title", title.getText().toString());
+        outState.putString("description", description.getText().toString());
         outState.putInt("recordRepsCount", Integer.parseInt(recordRepsCount.getText().toString()));
         outState.putString("recordDate", recordDate.getText().toString());
         outState.putInt("recordWeight", Integer.parseInt(recordWeight.getText().toString()));
@@ -207,7 +200,6 @@ public class WorkoutDetailActivity extends AppCompatActivity {
                 }
             }
         });
-
     }
 
     private void initGUI(Workout workout) {
@@ -228,33 +220,5 @@ public class WorkoutDetailActivity extends AppCompatActivity {
 
         saveRecordButton = findViewById(R.id.workout_detail_save_button);
         shareButton = findViewById(R.id.button_share);
-
-        final String[] data = {getString(R.string.pulling_up), getString(R.string.squat), getString(R.string.barbell_bench_press)};
-        ArrayAdapter<String> adapter = new ArrayAdapter<String>(this, android.R.layout.simple_spinner_item, data);
-        adapter.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
-        final Spinner spinner = (Spinner) findViewById(R.id.spinner);
-        spinner.setAdapter(adapter);
-
-        Intent intent = getIntent();
-        spinner.setSelection(Integer.parseInt(intent.getStringExtra("workout")));
-        spinner.setPrompt(getString(R.string.сhoose_exercise));
-
-        spinner.setOnItemSelectedListener(new AdapterView.OnItemSelectedListener() {
-            @Override
-            public void onItemSelected(AdapterView<?> parent, View view,
-                                       int position, long id) {
-                title.setText(data[position]);
-                // Toast.makeText(getBaseContext(), "Position = " + data[position], Toast.LENGTH_SHORT).show();
-
-            }
-
-            @Override
-            public void onNothingSelected(AdapterView<?> arg0) {
-            }
-        });
-
-
     }
-
-
 }
