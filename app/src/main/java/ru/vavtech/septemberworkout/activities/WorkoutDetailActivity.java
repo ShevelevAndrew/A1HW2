@@ -41,8 +41,8 @@ public class WorkoutDetailActivity extends AppCompatActivity {
     private EditText repsCountEditText;
     private Button saveRecordButton;
     private ImageButton shareButton;
+    Workout workout;
 
-    private Drawable mActionBarBackgroundDrawable;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -51,7 +51,7 @@ public class WorkoutDetailActivity extends AppCompatActivity {
 
         Intent intent = getIntent();
         int index = intent.getIntExtra(Constants.WORKOUT_INDEX, 0);
-        Workout workout = WorkoutList.getInstance().getWorkouts().get(index);
+        workout = WorkoutList.getInstance().getWorkouts().get(index);
 
 //        Workout workout = WorkoutList
 //                .getInstance()
@@ -61,17 +61,7 @@ public class WorkoutDetailActivity extends AppCompatActivity {
 
         initGUI(workout);
         addListeners();
-
     }
-
-    private NotifyingScrollView.OnScrollChangedListener mOnScrollChangedListener = new NotifyingScrollView.OnScrollChangedListener() {
-        public void onScrollChanged(ScrollView who, int l, int t, int oldl, int oldt) {
-            final int headerHeight = findViewById(R.id.button_share).getHeight() - getActionBar().getHeight();
-            final float ratio = (float) Math.min(Math.max(t, 0), headerHeight) / headerHeight;
-            final int newAlpha = (int) (ratio * 255);
-            mActionBarBackgroundDrawable.setAlpha(newAlpha);
-        }
-    };
 
     @Override
     protected void onSaveInstanceState(Bundle outState) {
@@ -192,10 +182,11 @@ public class WorkoutDetailActivity extends AppCompatActivity {
                 if (!repsCountEditText.getText().toString().isEmpty()) {
                     if ((Integer.parseInt(recordWeight.getText().toString()) * Integer.parseInt(recordRepsCount.getText().toString())) <
                             (weightSeekBar.getProgress() * Integer.parseInt(repsCountEditText.getText().toString()))) {
-                        Workout workoutNewRec = new Workout("Жим", "Жим лежа",
-                                Integer.parseInt(repsCountEditText.getText().toString()), new Date(),
-                                weightSeekBar.getProgress());
-                        initGUI(workoutNewRec);
+                        workout.setRecordWeight(weightSeekBar.getProgress());
+                        workout.setRecordRepsCount(Integer.valueOf(repsCountEditText.getText().toString()));
+                        workout.setRecordDate(new Date());
+                        initGUI(workout);
+
                     }
                 }
             }

@@ -11,6 +11,7 @@
         android:theme="@style/AppTheme">
         <activity
             android:name=".activities.WorkoutDetailActivity"
+            android:windowSoftInputMode="stateHidden"
             android:configChanges="keyboardHidden|orientation|screenSize"
             android:parentActivityName=".activities.WorkoutListActivity">
         </activity>
