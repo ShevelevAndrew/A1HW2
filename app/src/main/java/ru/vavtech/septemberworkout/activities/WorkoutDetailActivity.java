@@ -1,27 +1,20 @@
 package ru.vavtech.septemberworkout.activities;
 
 import android.content.Intent;
-import android.graphics.drawable.Drawable;
 import android.os.Bundle;
 import android.os.PersistableBundle;
 import android.support.v7.app.AppCompatActivity;
-import android.util.Log;
 import android.view.Menu;
 import android.view.MenuItem;
 import android.view.View;
-import android.widget.AdapterView;
-import android.widget.ArrayAdapter;
 import android.widget.Button;
 import android.widget.EditText;
 import android.widget.ImageButton;
 import android.widget.ImageView;
-import android.widget.ScrollView;
 import android.widget.SeekBar;
-import android.widget.Spinner;
 import android.widget.TextView;
 import android.widget.Toast;
 
-import java.text.SimpleDateFormat;
 import java.util.Date;
 
 import ru.vavtech.septemberworkout.Model.Workout;
@@ -41,8 +34,8 @@ public class WorkoutDetailActivity extends AppCompatActivity {
     private EditText repsCountEditText;
     private Button saveRecordButton;
     private ImageButton shareButton;
+    Workout workout;
 
-    private Drawable mActionBarBackgroundDrawable;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -51,7 +44,7 @@ public class WorkoutDetailActivity extends AppCompatActivity {
 
         Intent intent = getIntent();
         int index = intent.getIntExtra(Constants.WORKOUT_INDEX, 0);
-        Workout workout = WorkoutList.getInstance().getWorkouts().get(index);
+        workout = WorkoutList.getInstance().getWorkouts().get(index);
 
 //        Workout workout = WorkoutList
 //                .getInstance()
@@ -61,17 +54,7 @@ public class WorkoutDetailActivity extends AppCompatActivity {
 
         initGUI(workout);
         addListeners();
-
     }
-
-    private NotifyingScrollView.OnScrollChangedListener mOnScrollChangedListener = new NotifyingScrollView.OnScrollChangedListener() {
-        public void onScrollChanged(ScrollView who, int l, int t, int oldl, int oldt) {
-            final int headerHeight = findViewById(R.id.button_share).getHeight() - getActionBar().getHeight();
-            final float ratio = (float) Math.min(Math.max(t, 0), headerHeight) / headerHeight;
-            final int newAlpha = (int) (ratio * 255);
-            mActionBarBackgroundDrawable.setAlpha(newAlpha);
-        }
-    };
 
     @Override
     protected void onSaveInstanceState(Bundle outState) {
@@ -192,10 +175,11 @@ public class WorkoutDetailActivity extends AppCompatActivity {
                 if (!repsCountEditText.getText().toString().isEmpty()) {
                     if ((Integer.parseInt(recordWeight.getText().toString()) * Integer.parseInt(recordRepsCount.getText().toString())) <
                             (weightSeekBar.getProgress() * Integer.parseInt(repsCountEditText.getText().toString()))) {
-                        Workout workoutNewRec = new Workout("Жим", "Жим лежа",
-                                Integer.parseInt(repsCountEditText.getText().toString()), new Date(),
-                                weightSeekBar.getProgress());
-                        initGUI(workoutNewRec);
+                        workout.setRecordWeight(weightSeekBar.getProgress());
+                        workout.setRecordRepsCount(Integer.valueOf(repsCountEditText.getText().toString()));
+                        workout.setRecordDate(new Date());
+                        initGUI(workout);
+
                     }
                 }
             }
