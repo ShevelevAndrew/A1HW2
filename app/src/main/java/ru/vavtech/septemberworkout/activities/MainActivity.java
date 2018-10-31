@@ -1,10 +1,10 @@
 package ru.vavtech.septemberworkout.activities;
 
 import android.content.res.Configuration;
+import android.os.Bundle;
 import android.support.v4.app.FragmentManager;
 import android.support.v4.app.FragmentTransaction;
 import android.support.v7.app.AppCompatActivity;
-import android.os.Bundle;
 
 import ru.vavtech.septemberworkout.R;
 import ru.vavtech.septemberworkout.fragments.WorkoutDetailFragment;
@@ -24,10 +24,10 @@ public class MainActivity extends AppCompatActivity implements OnListItemClickLi
         fragmentManager = getSupportFragmentManager();
         FragmentTransaction transaction = fragmentManager.beginTransaction();
 
-        if(getResources().getConfiguration().orientation == Configuration.ORIENTATION_PORTRAIT) {
+        if (getResources().getConfiguration().orientation == Configuration.ORIENTATION_PORTRAIT) {
             transaction.replace(R.id.container, listFragment);
             transaction.commit();
-        }else {
+        } else {
             WorkoutDetailFragment detailFragment = WorkoutDetailFragment.initFragment(0);
             transaction.add(R.id.list_container, listFragment);
             transaction.add(R.id.detail_container, detailFragment);
@@ -41,13 +41,13 @@ public class MainActivity extends AppCompatActivity implements OnListItemClickLi
     public void onListItemClickListener(int index) {
         WorkoutDetailFragment detailFragment = WorkoutDetailFragment.initFragment(index);
 
-        if(getResources().getConfiguration().orientation == Configuration.ORIENTATION_PORTRAIT) {
+        if (getResources().getConfiguration().orientation == Configuration.ORIENTATION_PORTRAIT) {
             fragmentManager
                     .beginTransaction()
                     .add(R.id.container, detailFragment)
                     .addToBackStack("")
                     .commit();
-        }else {
+        } else {
             fragmentManager.beginTransaction()
                     .replace(R.id.list_container, listFragment)
                     .replace(R.id.detail_container, detailFragment)
