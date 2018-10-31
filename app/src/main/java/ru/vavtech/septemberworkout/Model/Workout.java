@@ -30,8 +30,8 @@ public class Workout {
     }
 
 
-    public String getFormattedRecordDate(){
-        return new SimpleDateFormat("dd MMMM yyyy", Locale.ROOT).format(recordDate);
+    public String getFormattedRecordDate() {
+        return new SimpleDateFormat("dd.MM.yyyy", Locale.ROOT).format(recordDate);
     }
 
     public String getTitle() {

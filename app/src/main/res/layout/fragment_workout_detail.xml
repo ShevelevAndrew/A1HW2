@@ -4,8 +4,9 @@
     android:id="@+id/scroll_view"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
+    android:background="@color/colorWhite"
     android:orientation="vertical"
-    tools:context=".activities.WorkoutDetailActivity">
+    tools:context=".fragments.WorkoutDetailFragment">
 
     <LinearLayout
         android:layout_width="match_parent"
